@@ -1,0 +1,70 @@
+﻿@model IEnumerable<AspaApp.Models.Product>
+
+@{
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else
+    {
+
+        Layout = "_Layout";
+    }
+
+
+
+
+
+  
+}
+<br>
+<h3>Добавление экскурсии</h3>
+<br>
+<form asp-action="Create2" asp-controller="Home" method="post" enctype="multipart/form-data">
+  
+    <p>
+        <label>Описание</label>
+        <input name="Description" class="form-control" />
+    </p>
+    <p>
+        <label>Тур фирма</label>
+        <input name="Company" class="form-control" />
+    </p>
+    <p>
+        <label>Место отправки</label>
+        <input name="Place" class="form-control" />
+    </p>
+    <p>
+        <label>Дата отправки</label>
+
+        <input name="Start" class="form-control" />
+    </p>
+    
+    <p>
+        <label>Цена</label>
+        <input name="ProductCost" class="form-control" />
+    </p>
+    <p>
+        <label>Количество билктов</label>
+        <input name="Numberoftickets" class="form-control" />
+    </p>
+    <p>
+        <label>Изоброжение</label>
+        <input name="ProductImage" type="file" class="form-control" />
+    </p>
+    <p>
+        <select name="СategoryId" class="form-control">
+            <option value="1">Пик фурманова </option>
+            <option value="2">Чарынский каньон</option>
+            <option value="3">БАО</option>
+            <option value="4">Бутаковский водопад</option>
+            <option value="5">Поющий бархан</option>
+
+        </select>
+    </p>
+    <br>
+    <p>
+        <input type="submit" value="Добавить" class="btn" />
+    </p>
+</form>

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AspaApp.Models.User>
+@{
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else
+    {
+
+        Layout = "_Layout";
+    }
+
+
+    ViewData["Title"] = "Admin page";
+}
+<br>
+<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Create">Добавить экскурсию</a>
+
+<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Adminproduct">Удалить экскурсию</a>
+
+<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Userlist">Удалить пользователя</a>
+<br>
+<h4>Ваш профиль , роль админ</h4>
+@foreach (var u1 in Model.Where(p => p.Email == User.Identity.Name))
+{
+
+
+<div class="alert alert-info" role="alert">
+    Id пользователя : @u1.Id
+</div>
+<div class="alert alert-info" role="alert">
+    Имя пользователя : @u1.Email
+</div>
+    
+
+
+}

@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AspaApp.Models.User>
+@{
+
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else
+    {
+
+        Layout = "_Layout";
+    }
+
+
+}
+<br>
+<h3>Удалить пользователя </h3>
+<br>
+
+<table class="table table-striped">
+    <thead>
+        <tr class="table-primary">
+            <td>User Id</td>
+            <td></td>
+            <td>Почта</td>
+            <td></td>
+
+            <td>Role Id</td>
+            <td></td>
+           
+            <td>Удалить</td>
+
+
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tbody>
+            <tr class="table-primary">
+                <td>@item.Id</td>
+                <td></td>
+                <td>@item.Email</td>
+                <td></td>
+
+                <td>@item.RoleId</td>
+                <td></td>
+
+                <td> <a asp-action="Delete3" asp-controller="Home" asp-route-id="@item.Id">Удалить</a></td>
+
+            </tr>
+        </tbody>
+    }
+</table>

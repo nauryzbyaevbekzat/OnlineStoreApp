@@ -1,0 +1,60 @@
+﻿@model IEnumerable<AspaApp.Models.Product>
+
+@{
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else
+    {
+
+        Layout = "_Layout";
+    }
+
+
+}
+
+<h2>Полное описание</h2>
+<br>
+@foreach (var item in Model)
+{
+    @if (item.ProductImage != null)
+    {
+        <img style='width:1000px; height:450px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(item.ProductImage))">
+    }
+    <br>
+
+
+
+    <div class="alert alert-info" role="alert">
+       Описание : @item.Description
+    </div>
+
+
+    <div class="alert alert-info" role="alert">
+        Туристическая компания : @item.Company
+    </div>
+    <div class="alert alert-info" role="alert">
+        Количество билетов : @item.Numberoftickets
+    </div>
+
+
+    <div class="alert alert-info" role="alert">
+        Стоимость билета : @item.ProductCost
+    </div>
+
+
+    <div class="alert alert-info" role="alert">
+        Время отправки : @item.Start
+    </div>
+
+
+    <div class="alert alert-info" role="alert">
+        Место отправки :  @item.Place
+    </div>
+
+
+
+
+}

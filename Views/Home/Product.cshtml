@@ -1,0 +1,73 @@
+﻿@model AspaApp.Models.ProductListViewModel
+
+@{
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else
+    {
+
+        Layout = "_Layout";
+    }
+
+    
+}
+
+    <h2>Экскурсии</h2>
+<br>
+<form method="get">
+    <div class="form-inline form-group">
+        <label class="control-label">Место  :  </label>
+        
+        <select name="company" class="form-control">
+            <option value="1">Пик фурманова </option>
+            <option value="2">Чарынский каньон</option>
+            <option value="3">БАО</option>
+            <option value="4">Бутаковский водопад</option>
+            <option value="5">Поющий бархан</option>
+
+        </select>
+
+        <input type="submit" value="Найти" class="btn btn-default bg-primary text-white" />
+
+    </div>
+</form>
+
+
+<br>
+@foreach (var item in Model.Products)
+{ 
+
+
+<div class="row mb-0">
+    <div class="col-md-10">
+        <div class="card flex-md-row mb-4 box-shadow h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+                <strong class="d-inline-block mb-2 text-primary">Тур фирма : @item.Company</strong>
+                <h3>Стоимость: @item.ProductCost тг</h3>
+                <p class="card-text mb-auto">Количество билетов: @item.Numberoftickets</p>
+                <p class="card-text mb-auto">Время отправки : @item.Start</p>
+                <p class="card-text mb-auto">Место отправки : @item.Place</p>
+             
+                <br>
+                <a href="~/Home/Add/@item.ProductId">Добавить корзину</a>
+                <a href="~/Home/Full/@item.ProductId">Полное описание</a>
+            </div>
+            @if (item.ProductImage != null)
+            {
+                <img class="card-img-right flex-auto d-none d-md-block" style='width:300px; height:250px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(item.ProductImage))">
+            }
+        </div>
+    </div>
+</div>
+
+<br>
+
+
+
+
+
+}
+

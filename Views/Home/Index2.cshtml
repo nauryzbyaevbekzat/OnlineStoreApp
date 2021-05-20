@@ -1,0 +1,19 @@
+﻿@{
+
+    if (User.Identity.IsAuthenticated == true)
+    {
+
+        Layout = "_Layout2";
+    }
+    else {
+
+        Layout = "_Layout";
+    }
+
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Спасибо за покупку!</h1>
+
+</div>
